@@ -557,7 +557,7 @@ void tick_counter(void)
 
      if (!IS_NPC(tt) && PRF_FLAGGED(tt, PRF_TICK))
      {
-       send_to_char(tt, "@mtick Tick TICK!@n\r\n");
+       send_to_char(tt, "%stick Tick TICK!%s\r\tn", KMAG, KNRM);
      }
    }
 }
