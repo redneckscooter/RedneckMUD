@@ -50,6 +50,8 @@ static int sort_commands_helper(const void *a, const void *b);
 /* globals defined here, used here and elsewhere */
 int *cmd_sort_info = NULL;
 
+ACMD(do_tick);
+
 struct command_info *complete_cmd_info;
 
 /* This is the Master Command List. You can put new commands in, take commands
@@ -310,6 +312,7 @@ cpp_extern const struct command_info cmd_info[] = {
   { "teleport" , "tele"    , POS_DEAD    , do_teleport , LVL_BUILDER, 0 },
   { "tedit"    , "tedit"   , POS_DEAD    , do_tedit    , LVL_GOD, 0 },  /* XXX: Oasisify */
   { "thaw"     , "thaw"    , POS_DEAD    , do_wizutil  , LVL_GRGOD, SCMD_THAW },
+  { "tick"     , "tick"    , POS_DEAD    , do_tick     , 0, 0 }, 
   { "title"    , "title"   , POS_DEAD    , do_title    , 0, 0 },
   { "time"     , "time"    , POS_DEAD    , do_time     , 0, 0 },
   { "toggle"   , "toggle"  , POS_DEAD    , do_toggle   , 0, 0 },

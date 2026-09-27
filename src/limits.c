@@ -545,3 +545,19 @@ int decrease_bank(struct char_data *ch, int deduction)
   increase_bank(ch, amt);
   return (GET_BANK_GOLD(ch));
 }
+
+/* Tick Counter */
+void tick_counter(void)
+{
+  struct char_data *tt, *next_char;
+
+  /* characters */
+  for (tt = character_list; tt; tt = next_char) {
+    next_char = tt->next;
+
+     if (!IS_NPC(tt) && PRF_FLAGGED(tt, PRF_TICK))
+     {
+       send_to_char(tt, "@mtick Tick TICK!@n\r\n");
+     }
+   }
+}
