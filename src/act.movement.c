@@ -35,7 +35,7 @@ static void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int
 static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd);
 
 /* Tick COunter */
-add ACMD(do_tick);
+ACMD(do_tick);
 
 int do_count = 0;
 int tcount = 0;
