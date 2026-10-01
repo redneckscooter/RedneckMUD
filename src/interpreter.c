@@ -52,6 +52,8 @@ int *cmd_sort_info = NULL;
 
 ACMD(do_tick);
 
+void roll_real_abils(struct char_data *ch);
+
 struct command_info *complete_cmd_info;
 
 /* This is the Master Command List. You can put new commands in, take commands
@@ -1662,7 +1664,30 @@ void nanny(struct descriptor_data *d, char *arg)
     } else {
       GET_CLASS(d->character) = load_result;
     }
+   write_to_output(d, "\r\nPress enter to roll your stats.");
+   STATE(d) = CON_QROLLSTATS;
+   break;
 
+  case CON_QROLLSTATS:
+    switch (*arg) {
+      case 'y':
+      case 'Y':
+        break;
+      case 'n':
+      case 'N':
+      default:
+        roll_real_abils(d->character);
+        write_to_output(d, "\r\nStr: [%d/%d] Int: [%d] Wis: [%d] Dex:"
+            " [%d] Con: [%d] Cha: [%d]",
+            GET_STR(d->character), GET_ADD(d->character),
+            GET_INT(d->character), GET_WIS(d->character),
+            GET_DEX(d->character), GET_CON(d->character),
+            GET_CHA(d->character));
+        write_to_output(d, "\r\n");
+        write_to_output(d, "\r\n\r\nKeep these stats? (y/N)");
+        return;
+    }
+    
       if (d->olc) {
         free(d->olc);
         d->olc = NULL;
