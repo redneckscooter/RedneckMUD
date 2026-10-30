@@ -34,6 +34,29 @@ static int has_key(struct char_data *ch, obj_vnum key);
 static void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd);
 static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd);
 
+/* Tick COunter */
+ACMD(do_tick);
+
+int do_count = 0;
+int tcount = 0;
+ACMD(do_tick)
+{
+  if (tcount == 0)
+  {
+     
+     send_to_char(ch, "You will now see the tick counter.\r\n");
+     SET_BIT_AR(PRF_FLAGS(ch), PRF_TICK);
+     tcount = 1;
+  }
+     
+  else
+  { 
+    send_to_char(ch, "You will no longer see the tick counter.\r\n");
+    REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_TICK);
+    tcount = 0;
+  }
+
+}
 
 /* simple function to determine if char can walk on water */
 static int has_boat(struct char_data *ch)

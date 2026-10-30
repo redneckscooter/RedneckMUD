@@ -13,6 +13,12 @@ src/depend
 src/util/depend
 build/*
 
+# Do not commit Log files
+logs/*
+
+# Do commit placeholder
+!logs/.gitkeep
+
 # Do not commit files from players
 lib/plrfiles/A-E/*
 lib/plrfiles/F-J/*

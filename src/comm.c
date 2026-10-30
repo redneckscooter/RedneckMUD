@@ -1078,6 +1078,7 @@ void heartbeat(int heart_pulse)
     affect_update();
     point_update();
     check_timed_quests();
+    tick_counter();
   }
 
   if (CONFIG_AUTO_SAVE && !(heart_pulse % PULSE_AUTOSAVE)) {	/* 1 minute */
